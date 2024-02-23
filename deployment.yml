@@ -1,0 +1,39 @@
+version: '2'
+services:
+  vote:
+    ports:
+      - '80'
+    networks:
+      - front-tier
+      - back-tier
+    image: 'containers101/votingapp:master'
+  result:
+    ports:
+      - '80'
+    networks:
+      - front-tier
+      - back-tier
+    image: 'containers101/votingapp1:master'
+  worker:
+    networks:
+      - back-tier
+    image: 'containers101/votingapp2:master'
+  redis:
+    image: 'redis:alpine'
+    container_name: redis
+    ports:
+      - '6379'
+    networks:
+      - back-tier
+  db:
+    image: 'postgres:9.4'
+    container_name: db
+    volumes:
+      - 'db-data:/var/lib/postgresql/data'
+    networks:
+      - back-tier
+volumes:
+  db-data:
+networks:
+  front-tier:
+  back-tier:  
