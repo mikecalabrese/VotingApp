@@ -22,5 +22,5 @@ spec:
       volumes:
       - name: git-volume
         gitRepo:
-          repository: "https://github.com/codefreshdemo/demochat.git"
+          repository: "https://github.com/mikecalabrese/VotingApp.git"
           #revision: "22f1d8406d464b0c08740  75539c1f2e96c253775
